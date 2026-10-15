@@ -83,6 +83,23 @@ def update_product():
         else:
             print("Producto no encontrado")
 
+def delete_product():
+    with app.app_context():
+
+        print("\nELIMINAR PRODUCTO")
+
+        producto = Product.query.filter_by(
+            name="Mouse"
+        ).first()
+
+        if producto:
+            db.session.delete(producto)
+            db.session.commit()
+
+            print("Producto eliminado correctamente")
+        else:
+            print("Producto no encontrado")
+
 if __name__ == "__main__":
 
     #init_db()
@@ -90,3 +107,4 @@ if __name__ == "__main__":
     #query_products()
     #search_product()
     #update_product()
+    #delete_product()
