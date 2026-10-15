@@ -44,7 +44,18 @@ def insert_products():
         db.session.commit()
         print("Productos registrados correctamente")
 
+def query_products():
+    with app.app_context():
+
+        print("\nLISTADO DE PRODUCTOS")
+
+        productos = Product.query.all()
+
+        for item in productos:
+            print(item)
+
 if __name__ == "__main__":
 
     #init_db()
     #insert_products()
+    #query_products()
