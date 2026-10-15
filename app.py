@@ -54,8 +54,21 @@ def query_products():
         for item in productos:
             print(item)
 
+def search_product():
+    with app.app_context():
+
+        print("\nBUSCAR PRODUCTO")
+
+        producto = Product.query.filter_by(id=1).first()
+
+        if producto:
+            print(producto)
+        else:
+            print("Producto no encontrado")
+
 if __name__ == "__main__":
 
     #init_db()
     #insert_products()
     #query_products()
+    #search_product()
