@@ -24,8 +24,27 @@ def init_db():
         db.create_all()
         print("Base de datos creada satisfactoriamente")
 
+def insert_products():
+    with app.app_context():
 
+        productos = [
+            Product(name="Teclado", price=120.50, stock=10),
+            Product(name="Mouse", price=45.00, stock=20),
+            Product(name="Cable USB", price=15.00)
+        ]
+
+        for producto in productos:
+            existente = Product.query.filter_by(
+                name=producto.name
+            ).first()
+
+            if not existente:
+                db.session.add(producto)
+
+        db.session.commit()
+        print("Productos registrados correctamente")
 
 if __name__ == "__main__":
 
-    init_db()
+    #init_db()
+    #insert_products()
