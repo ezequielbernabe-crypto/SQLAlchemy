@@ -66,9 +66,27 @@ def search_product():
         else:
             print("Producto no encontrado")
 
+def update_product():
+    with app.app_context():
+
+        print("\nACTUALIZAR PRODUCTO")
+
+        producto = Product.query.filter_by(id=1).first()
+
+        if producto:
+            producto.price = 125.00
+            producto.stock = 15
+
+            db.session.commit()
+
+            print("Producto actualizado:", producto)
+        else:
+            print("Producto no encontrado")
+
 if __name__ == "__main__":
 
     #init_db()
     #insert_products()
     #query_products()
     #search_product()
+    #update_product()
